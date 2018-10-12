@@ -1,5 +1,5 @@
 /*
-    Assignment-2 by Balaji Murali
+    Assignment-2 by Balaji
 */
 
 package charlie.client;

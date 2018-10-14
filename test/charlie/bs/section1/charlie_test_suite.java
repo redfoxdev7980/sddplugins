@@ -17,7 +17,9 @@ import org.junit.runners.Suite;
  * @author Balaji
  */
 @RunWith(Suite.class)
-@Suite.SuiteClasses({charlie.bs.section1.Test01_12_2.class, charlie.bs.section1.Test00_12_2.class, charlie.bs.section1.Test00_12_7.class })
+@Suite.SuiteClasses({charlie.bs.section1.Test00_12_3.class, charlie.bs.section1.Test00_12_4.class, charlie.bs.section1.Test00_15_7.class, charlie.bs.section1.Test00_16_6.class 
+    ,charlie.bs.section1.Test00_11_1.class,charlie.bs.section1.Test00_10_9.class,charlie.bs.section1.Test00_9_2.class, charlie.bs.section1.Test00_7_7.class })
+
 public class charlie_test_suite {
 
     @BeforeClass

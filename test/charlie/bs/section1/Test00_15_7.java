@@ -23,35 +23,16 @@ import static org.junit.Assert.*;
  *
  * @author Balaji
  */
-public class Test00_12_7 {
+public class Test00_15_7 {
     
-    public Test00_12_7() {
-    }
-    
-    @BeforeClass
-    public static void setUpClass() {
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
-    
-    @Before
-    public void setUp() {
-    }
-    
-    @After
-    public void tearDown() {
-    }
-
     @Test
      public void test() {
         // Generate an initially empty hand
         Hand myHand = new Hand(new Hid(Seat.YOU));
         
-        // Put two cards in hand: 2+10
-        Card card1 = new Card(7,Card.Suit.CLUBS);
-        Card card2 = new Card(5,Card.Suit.DIAMONDS);
+        // Put two cards in hand: 8+7
+        Card card1 = new Card(8,Card.Suit.CLUBS);
+        Card card2 = new Card(7,Card.Suit.SPADES);
         
         myHand.hit(card1);
         myHand.hit(card2);

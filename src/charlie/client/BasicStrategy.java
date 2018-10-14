@@ -17,8 +17,8 @@ public class BasicStrategy {
     
     Play[][] section1Rules = {
                 // 2  3  4  5  6  7  8  9  T  A
-        /* 21 */ { S, S, S, S, S, S, S, S, S, S  },
-        /* 20 */ { S, S, S, S, S, S, S, S, S, S  },
+        /* 21 */ { S, S, S, S, S, S, S, S, S, S},
+        /* 20 */ { S, S, S, S, S, S, S, S, S, S},
         /* 19 */ { S, S, S, S, S, S, S, S, S, S},
         /* 18 */ { S, S, S, S, S, S, S, S, S, S},
         /* 17 */ { S, S, S, S, S, S, S, S, S, S},
@@ -26,15 +26,19 @@ public class BasicStrategy {
         /* 15 */ { S, S, S, S, S, H, H, H, H, H},
         /* 14 */ { S, S, S, S, S, H, H, H, H, H},
         /* 13 */ { S, S, S, S, S, H, H, H, H, H},
-        /* 12 */ { H, H, S, S, S, H, H, H, H, H},
+        /* 12 */ { H, H, S, S, S, H, H, H, H, H}
+    };
+    Play[][] section2Rules = {
         /* 11 */ { D, D, D, D, D, D, D, D, D, H},
         /* 10 */ { D, D, D, D, D, D, D, D, S, S},
-        /* 9 */ { H, D, D, D, H, H, H, H, H, H},
-        /* 8 */ { H, H, H, H, H, H, H, H, H, H},
-        /* 7 */ { H, H, H, H, H, H, H, H, H, H},
-        /* 6 */ { H, H, H, H, H, H, H, H, H, H},
-        /* 5 */ { H, H, H, H, H, H, H, H, H, H}
+        /* 9 */  { H, D, D, D, H, H, H, H, H, H},
+        /* 8 */  { H, H, H, H, H, H, H, H, H, H},
+        /* 7 */  { H, H, H, H, H, H, H, H, H, H},
+        /* 6 */  { H, H, H, H, H, H, H, H, H, H},
+        /* 5 */  { H, H, H, H, H, H, H, H, H, H}        
     };
+
+
     
     
     public Play getPlay(Hand hand, Card upCard) {
@@ -59,15 +63,11 @@ public class BasicStrategy {
     /**
      * Does section 1 processing of the basic strategy, 12-21 (player) vs. 2-A (dealer)
      * @param hand Player's hand
-     * @param upCard Dealer's up-card
+     * @param upCard Dealer's up-card by Prof. Coleman
      */
     protected Play doSection1(Hand hand, Card upCard) {
         int value = hand.getValue();
-        
-        // Section one table built only for hand values >= 20 (see above).
-//        if(value < 20)
-//            return Play.NONE;
-        
+     
         // Subtract 21 since the player's hand starts at 21 and we're working
         // our way down through section 1
         int rowIndex = 21 - value;
@@ -89,22 +89,18 @@ public class BasicStrategy {
         return play;
     }
     /**
-     * Does section 1 processing of the basic strategy, 12-21 (player) vs. 2-A (dealer)
+     * Does section 2 processing of the basic strategy, 12-21 (player) vs. 2-A (dealer)
      * @param hand Player's hand
      * @param upCard Dealer's up-card
      */
     protected Play doSection2(Hand hand, Card upCard) {
         int value = hand.getValue();
         
-        // Section one table built only for hand values >= 20 (see above).
-//        if(value < 20)
-//            return Play.NONE;
-        
         // Subtract 21 since the player's hand starts at 21 and we're working
         // our way down through section 1
-        int rowIndex = 21 - value;
+        int rowIndex = 11 - value;
         
-        Play[] row = section1Rules[rowIndex];
+        Play[] row = section2Rules[rowIndex];
         
         // Subtract 2 since the dealer's up-card start at 2
         int colIndex = upCard.getRank() - 2;

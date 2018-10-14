@@ -37,6 +37,17 @@ public class BasicStrategy {
         /* 6 */  { H, H, H, H, H, H, H, H, H, H},
         /* 5 */  { H, H, H, H, H, H, H, H, H, H}        
     };
+    Play[][] section3Rules = {
+        /* A10 */  { S, S, S, S, S, S, S, S, S, S} ,
+        /* A9 */  { S, S, S, S, S, S, S, S, S, S} ,
+        /* A8 */  { S, S, S, S, S, S, S, S, S, S} ,
+        /* A7 */  { S, D, D, D, D, S, S, H, H, H} ,
+        /* A6 */  { H, D, D, D, D, H, H, H, H, H} ,
+        /* A5 */  { H, H, D, D, D, H, H, H, H, H} ,
+        /* A4 */  { H, H, D, D, D, H, H, H, H, H} ,
+        /* A3 */  { H, H, H, D, D, H, H, H, H, H} ,
+        /* A2 */  { H, H, H, D, D, H, H, H, H, H} ,
+    };
 
 
     
@@ -115,5 +126,14 @@ public class BasicStrategy {
         Play play = row[colIndex];
         
         return play;
+    }
+    protected Play doSection3(Hand hand, Card upCard) {
+        //get the value of the hand
+        int value = hand.getValue();
+        
+        
+        
+        
+        return Play.NONE;
     }
 }

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package charlie.bs.section1;
+package charlie.bs.section4;
 
 import charlie.card.Card;
 import charlie.card.Hand;
@@ -23,22 +23,22 @@ import static org.junit.Assert.*;
  *
  * @author Balaji
  */
-public class Test00_10_9 {
+public class Test00_12_6 {
     
     @Test
     public void test() {
         // Generate an initially empty hand
         Hand myHand = new Hand(new Hid(Seat.YOU));
         
-        // Put two cards in hand: 4+6
-        Card card1 = new Card(4,Card.Suit.SPADES);
+        // Put two cards in hand: 9+9
+        Card card1 = new Card(6,Card.Suit.SPADES);
         Card card2 = new Card(6,Card.Suit.HEARTS);
         
         myHand.hit(card1);
         myHand.hit(card2);
         
-        // Create dealer up card: 9
-        Card upCard = new Card(9,Card.Suit.CLUBS);
+        // Create dealer up card: 7
+        Card upCard = new Card(6,Card.Suit.CLUBS);
         
         // Construct advisor and test it
         IAdvisor advisor = new Advisor();
@@ -46,6 +46,6 @@ public class Test00_10_9 {
         Play advice = advisor.advise(myHand, upCard);
         
         // Validate the advise
-        assertEquals(advice, Play.DOUBLE_DOWN);
+        assertEquals(advice, Play.SPLIT);
     }
 }

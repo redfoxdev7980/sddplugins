@@ -46,7 +46,19 @@ public class BasicStrategy {
         /* A5 */  { H, H, D, D, D, H, H, H, H, H} ,
         /* A4 */  { H, H, D, D, D, H, H, H, H, H} ,
         /* A3 */  { H, H, H, D, D, H, H, H, H, H} ,
-        /* A2 */  { H, H, H, D, D, H, H, H, H, H} ,
+        /* A2 */  { H, H, H, D, D, H, H, H, H, H} 
+    };
+    Play[][] section4Rules = {
+        /* 1010 */{ S, S, S, S, S, S, S, S, S, S} ,
+        /* 99 */  { P, P, P, P, P, S, P, P, S, S} ,
+        /* 88 */  { P, P, P, P, P, P, P, P, P, P} ,        
+        /* 77 */  { P, P, P, P, P, P, H, H, H, H} ,
+        /* 66 */  { P, P, P, P, P, H, H, H, H, H} ,
+        /* 55 */  { D, D, D, D, D, D, D, D, H, H} ,
+        /* 44 */  { H, H, H, S, S, H, H, H, H, H} ,
+        /* 33 */  { P, P, P, P, P, P, H, H, H, H} , 
+        /* 22 */  { P, P, P, P, P, P, H, H, H, H} ,
+        /* AA */  { P, P, P, P, P, P, P, P, P, P} 
     };
 
 
@@ -57,10 +69,10 @@ public class BasicStrategy {
         Card card2 = hand.getCard(1);
         
         if(hand.isPair()) {
-            // TODO: return doSection4(hand,upCard)
+            return doSection4(hand,upCard);
         }
         else if(hand.size() == 2 && (card1.getRank() == Card.ACE || card2.getRank() == Card.ACE)) {
-            // TODO: return doSection3(hand,upCard)
+            return doSection3(hand,upCard);
         }
         else if(hand.getValue() >=5 && hand.getValue() < 12) {
             return doSection2(hand,upCard);
@@ -130,10 +142,38 @@ public class BasicStrategy {
     protected Play doSection3(Hand hand, Card upCard) {
         //get the value of the hand
         int value = hand.getValue();
+        int rowIndex = 21 - value;
+        Play[] row = section3Rules[rowIndex];
+        // Subtract 2 since the dealer's up-card start at 2
+        int colIndex = upCard.getRank() - 2;
+         
+        if(upCard.isFace())
+            colIndex = 10 - 2;
+
+        // Ace is the 10th card (index 9)
+        else if(upCard.isAce())
+            colIndex = 9;
         
+        Play play = row[colIndex];
         
+        return play;        
+    }
+    protected Play doSection4(Hand hand, Card upCard){
+
+        int rowIndex = 10 - hand.getCard(0).value();
+        Play[] row = section4Rules[rowIndex];
+        // Subtract 2 since the dealer's up-card start at 2
+        int colIndex = upCard.getRank() - 2;
+         
+        if(upCard.isFace())
+            colIndex = 10 - 2;
+
+        // Ace is the 10th card (index 9)
+        else if(upCard.isAce())
+            colIndex = 9;
         
+        Play play = row[colIndex];
         
-        return Play.NONE;
+        return play;                
     }
 }

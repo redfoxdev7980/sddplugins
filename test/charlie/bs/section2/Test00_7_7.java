@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package charlie.bs.section1;
+package charlie.bs.section2;
 
 import charlie.card.Card;
 import charlie.card.Hand;
